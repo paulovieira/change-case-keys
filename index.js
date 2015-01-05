@@ -28,6 +28,7 @@ function changeCase(obj, methodName){
         if(_.isArray(obj)){
             for(var i=0, l=obj.length; i<l; i++){
                 changeCase(obj[i], methodName);
+                return;
             }
         }
         // if it's not array nor a "normal" object, exit early
@@ -45,7 +46,6 @@ function changeCase(obj, methodName){
             });
         }
     }
-
 }
 
 // NOTE: the idea is the same for objects and arrays; if we look at arrays as 

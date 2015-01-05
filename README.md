@@ -50,7 +50,7 @@ After the call, the keys of `obj` will be in underscored case (the values will b
 
 Useful if you're acessing a Postgres database in Node. The convention in Postgres is to use underscore case for the names of the table columns. The data from a query (using the [pg](https://github.com/brianc/node-postgres) module) will be an array of objects, where each object represents a row and the keys are the column names.
 
-This function will convert the keys to camel case (and vice-versa). So you can have columns named "first_name", "last_name", etc, and the object with the query data will have the keys "firstName", "lastName", etc.
+This function will convert the keys to camel case (and vice-versa). This way you can peacefully have columns named "first_name", "last_name", etc, and the objects with the query data will have the keys "firstName", "lastName", etc.
 
 ## Install and usage
 
