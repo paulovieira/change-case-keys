@@ -1,0 +1,28 @@
+{
+  "name": "change-case-keys",
+  "version": "0.0.1",
+  "description": "Change the case of the keys of a javascript object (from underscore to camel case)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/paulovieira/change-case-keys.git"
+  },
+  "keywords": [
+    "object keys",
+    "camel case",
+    "underscore case"
+  ],
+  "author": "Paulo Vieira",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/paulovieira/change-case-keys/issues"
+  },
+  "homepage": "https://github.com/paulovieira/change-case-keys",
+  "dependencies": {
+    "underscore": "^1.7.0",
+    "underscore.string": "^2.4.0"
+  }
+}
