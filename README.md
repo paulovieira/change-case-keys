@@ -54,7 +54,7 @@ This function will convert the keys to camel case (and vice-versa). This way you
 
 ## Install and usage
 
-Install with npm: 
+Install with npm. Depends on [underscore](https://github.com/jashkenas/underscore) and [underscore.string](https://github.com/epeli/underscore.string).
 ```
 npm install change-case-keys
 ```
