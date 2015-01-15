@@ -16,7 +16,7 @@ var obj = {
     ]
 }
 
-//changeCaseKeys(obj, "dasherize");
-changeCaseKeys(obj, "underscored");
+//console.log(changeCaseKeys(obj, "dasherize"));
+console.log(changeCaseKeys(obj, "underscored"));
 
-console.log(obj);
+
