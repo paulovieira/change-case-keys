@@ -31,9 +31,13 @@ function changeCase(obj, methodName){
             }
         }
         // if it's not array nor a "normal" object, exit early
-        else if(obj instanceof Date ||
-                obj instanceof Error ||
-                obj instanceof RegExp ){
+        else if(obj instanceof Function ||
+                obj instanceof Date     ||
+                obj instanceof RegExp   ||
+                obj instanceof Number   ||
+                obj instanceof String   ||
+                obj instanceof Boolean  ||
+                obj instanceof Error){
                     return; 
                 }
         // we have a "normal" object - change the case of the keys and 
