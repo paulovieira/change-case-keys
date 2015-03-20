@@ -59,16 +59,22 @@ Install with npm. Depends on [underscore](https://github.com/jashkenas/underscor
 npm install change-case-keys
 ```
 
-The module exports a function which accepts two parameters:
+The module exports a function which accepts 3 parameters:
 ```javascript
 var changeCaseKeys = require("change-case-keys");
-changeCaseKeys(obj, "underscored");
+var maxRecursionLevel = 2;
+
+changeCaseKeys(obj, "underscored", maxRecursionLevel);
 ```
 
-It uses [underscore.string](https://github.com/epeli/underscore.string) to make the case conversion. The second argument should be a string value with the name of the method from underscore.string that will be used. 
+This module uses [underscore.string](https://github.com/epeli/underscore.string) to make the case conversion. The second argument should be a string value with the name of the method from underscore.string that will be used. 
 
 Usually it should be one of these:
  - [underscored](https://github.com/epeli/underscore.string#underscoredstring--string) (change the keys to `underscore_case`)
  - [camelize](https://github.com/epeli/underscore.string#camelizestring-decapitalizefalse--string) (change the keys to `camelCase`)
  - [dasherize](https://github.com/epeli/underscore.string#dasherizestring--string) (change the keys to `dash-case`)
 
+The third argument is optional and can be used to control how deep you want to go to change the keys. To change the keys of only the top most properties you should use:
+```
+changeCaseKeys(obj, "underscored", 1);
+```
