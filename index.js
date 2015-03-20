@@ -1,6 +1,8 @@
 var _ = require('underscore');
 var _s = require('underscore.string');
 
+var maxRecursionLevel = -1;
+
 function changeCaseKeys(obj, methodName) {
     var method = _s[methodName],
         originalKeys = Object.keys(obj),
@@ -24,17 +26,20 @@ function changeCaseKeys(obj, methodName) {
     }
 }
 
-function changeCase(obj, methodName, recursionLevel) {
+function changeCase(obj, methodName, currRecursionLevel) {
 
-    if (!recursionLevel) {
-        recursionLevel = 0;
+    if (!currRecursionLevel) {
+        currRecursionLevel = 0;
     }
 
     if (_.isObject(obj)) {
         // first check the common case: arrays
         if (_.isArray(obj)) {
-            for (var i = 0, l = obj.length; i < l; i++) {
-                changeCase(obj[i], methodName, recursionLevel + 1);
+            // if we have reached the max level, don't make the recursive call
+            if(currRecursionLevel !== maxRecursionLevel){
+                for (var i = 0, l = obj.length; i < l; i++) {
+                    changeCase(obj[i], methodName, currRecursionLevel + 1);
+                }                
             }
         }
         // if it's not array nor a "normal" object, exit early
@@ -50,14 +55,17 @@ function changeCase(obj, methodName, recursionLevel) {
         // we have a "normal" object - change the case of the keys and 
         // make a recursive call for each value in the object
         else {
-            changeCaseKeys(obj, methodName);
-            Object.keys(obj).forEach(function(key) {
-                changeCase(obj[key], methodName, recursionLevel + 1);
-            });
+            // if we have reached the max level, don't make the recursive call
+            if (currRecursionLevel !== maxRecursionLevel) {
+                changeCaseKeys(obj, methodName);
+                Object.keys(obj).forEach(function(key) {
+                    changeCase(obj[key], methodName, currRecursionLevel + 1);
+                });
+            }
         }
     }
 
-    if (recursionLevel === 0) {
+    if (currRecursionLevel === 0) {
         return obj;
     }
 }
@@ -68,4 +76,12 @@ function changeCase(obj, methodName, recursionLevel) {
 // as for objects, since the key can be anything, we have to call changeCaseKeys
 // before the recursive call
 
-module.exports = changeCase;
+
+module.exports = function(obj, methodName, maxLevel){
+
+    if(maxLevel){
+        maxRecursionLevel = maxLevel;
+    }
+
+    return changeCase(obj, methodName);    
+};
