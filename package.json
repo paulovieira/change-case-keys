@@ -1,6 +1,6 @@
 {
   "name": "change-case-keys",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Change the case of the keys of a javascript object (camel case, underscore case, dash case)",
   "main": "index.js",
   "scripts": {
