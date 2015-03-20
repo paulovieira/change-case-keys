@@ -32,6 +32,17 @@ var obj = {
     }
 }
 
+var obj = [
+{    someProp1A: {
+        anotherProp2A: {
+            yetAnotherProp3A: "xxx",
+            yetAnotherProp3B: "www"
+        },
+        anotherProp2B: "yyy",
+        anotherProp2C: "zzz"
+    }
+}
+]
 
 //console.log(changeCaseKeys(obj, "dasherize"));
 console.log(changeCaseKeys(obj, "underscored", 1));
